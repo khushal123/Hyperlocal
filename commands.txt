@@ -4,15 +4,6 @@ npm install pg --save
 
 sequelize migration:generate   
 
-sequelize model:generate --name users
-sequelize model:generate --name users_token
-sequelize model:generate --name users_cart
-sequelize model:generate --name users_address
-sequelize model:generate --name orders
-sequelize model:generate --name order_cancellation
-sequelize model:generate --name restaurants
-sequelize model:generate --name products
-sequelize model:generate --name discounts
-sequelize model:generate --name payments
+
 
 

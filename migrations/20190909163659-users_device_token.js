@@ -7,18 +7,15 @@ module.exports = {
      Return a promise to correctly handle asynchronicity.
 
      Example: */
-    return queryInterface.createTable('users_token', {
+    return queryInterface.createTable('users_device_token', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      token: {
+      device_id: {
         type: Sequelize.STRING
-      },
-      status: {
-        type: Sequelize.INTEGER
       },
       user_id: {
         type: Sequelize.BIGINT,
@@ -36,7 +33,7 @@ module.exports = {
      Return a promise to correctly handle asynchronicity.
 
      Example: */
-    return queryInterface.dropTable('users_token');
+    return queryInterface.dropTable('users_device_token');
 
   }
 };

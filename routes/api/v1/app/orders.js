@@ -1,25 +1,12 @@
 var express = require('express');
 var router = express.Router();
 
+var { saveCart, saveSingle, getOrder } = require("../../../../controllers/app/orders")
 
-router.get("/:id", function (req, res, next) {
-});
+router.get("/:id", getOrder);
 
-router.post('/save-single', function (req, res, next) {
-    res.send('respond with a resource');
-});
+router.post('/checkout-single', saveSingle);
 
-router.post('/save-cart', function (req, res, next) {
-    res.send('respond with a resource');
-});
-
-
-
-
-
-
-
-
-
+router.post('/checkout-cart', saveCart);
 
 module.exports = router;

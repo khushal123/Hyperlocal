@@ -56,6 +56,16 @@ module.exports = {
       },
       total_price: {
         type: Sequelize.FLOAT
+      },
+      createdAt: {
+        allowNull: true,
+        type: Sequelize.DATE,
+        default: Sequelize.fn("NOW")
+      },
+      updatedAt: {
+        allowNull: true,
+        type: Sequelize.DATE,
+        default: Sequelize.fn("NOW")
       }
     });
   },

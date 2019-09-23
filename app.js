@@ -7,8 +7,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
+var appRouter = require('./routes/api/v1/app');
+var adminRouter = require("./routes/api/v1/admin");
+var { validateToken } = require("./utils/token");
 var app = express();
 
 // view engine setup
@@ -22,15 +23,32 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/api/v1/app', appRouter);
+app.use('/api/v1/admin', adminRouter);
+
+//validate token
+
+app.use((req, res, next) => {
+  // var token = req.headers["token"];
+  // validateToken(token).then((userData) => {
+  //   req.userId = userData.userId;
+  //   next();
+  // }).catch((error) => {
+  //   res.json({
+  //     status: 400,
+  //     message: "Invalid token",
+  //     description: error
+  //   })
+  // })
+});
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

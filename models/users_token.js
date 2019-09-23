@@ -1,9 +1,6 @@
-module.exports = (sequelize, { STRING, BOOLEAN, INTEGER, DATE }) => {
+module.exports = (sequelize, Sequelize) => {
     const users_token = sequelize.define('users_token', {
-        fcm_token: {
-            type: Sequelize.STRING
-        },
-        token_type: {
+        token: {
             type: Sequelize.STRING
         },
         status: {
@@ -11,17 +8,13 @@ module.exports = (sequelize, { STRING, BOOLEAN, INTEGER, DATE }) => {
         },
         user_id: {
             type: Sequelize.BIGINT,
-            references: {
-                model: 'users',
-                key: 'id'
-            },
         }
     }, {
         classMethods: {
             associate: (models) => {
-                users_token.belongsTo(models.users);
+                users_token.belongsTo(models.users, { foreignKey: 'user_id' });
             }
         }
     });
-    return users;
+    return users_token;
 };

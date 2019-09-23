@@ -28,7 +28,25 @@ module.exports = {
       },
       discount_value: {
         type: Sequelize.STRING
-      }
+      },
+      createdAt: {
+        allowNull: true,
+        type: Sequelize.fn("NOW")
+      },
+      updatedAt: {
+        allowNull: true,
+        type: Sequelize.fn("NOW")
+      },
+      createdAt: {
+        allowNull: true,
+        type: Sequelize.DATE,
+        default: Sequelize.fn("NOW")
+      },
+      updatedAt: {
+        allowNull: true,
+        type: Sequelize.DATE,
+        default: Sequelize.fn("NOW")
+      },
     });
 
   },

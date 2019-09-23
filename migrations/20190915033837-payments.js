@@ -7,31 +7,34 @@ module.exports = {
      Return a promise to correctly handle asynchronicity.
 
      Example: */
-    return queryInterface.createTable('users_address', {
+    return queryInterface.createTable('payments', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      user_id: {
-        type: Sequelize.BIGINT,
-        references: {
-          model: 'users',
-          key: 'id'
-        },
-      },
-      address_line_1: {
+      payment_type: {
         type: Sequelize.STRING
       },
-      address_line_2: {
-        type: Sequelize.STRING
+      amount: {
+        type: Sequelize.FLOAT,
       },
-      address_line_3: {
-        type: Sequelize.STRING
+      transaction_id: {
+        type: Sequelize.BIGINT
       },
-      pincode: {
+      status: {
         type: Sequelize.INTEGER
+      },
+      createdAt: {
+        allowNull: true,
+        type: Sequelize.DATE,
+        default: Sequelize.fn("NOW")
+      },
+      updatedAt: {
+        allowNull: true,
+        type: Sequelize.DATE,
+        default: Sequelize.fn("NOW")
       }
     });
 
@@ -43,7 +46,7 @@ module.exports = {
      Return a promise to correctly handle asynchronicity.
 
      Example: */
-    return queryInterface.dropTable('users_address');
+    return queryInterface.dropTable('payments');
 
   }
 };

@@ -27,10 +27,20 @@ module.exports = {
       availability_hours: {
         type: Sequelize.FLOAT
       },
+
       price: {
         type: Sequelize.FLOAT,
       },
       description: {
+        type: Sequelize.STRING
+      },
+      name: {
+        type: Sequelize.STRING
+      },
+      status: {
+        type: Sequelize.INTEGER //0 = inactive, 1=available, 2=not available
+      },
+      product_type: {
         type: Sequelize.STRING
       },
       is_discount_available: {
@@ -42,6 +52,16 @@ module.exports = {
           model: 'discounts',
           key: 'id'
         },
+      },
+      createdAt: {
+        allowNull: true,
+        type: Sequelize.DATE,
+        default: Sequelize.fn("NOW")
+      },
+      updatedAt: {
+        allowNull: true,
+        type: Sequelize.DATE,
+        default: Sequelize.fn("NOW")
       }
     });
 

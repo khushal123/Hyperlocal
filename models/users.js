@@ -1,12 +1,14 @@
-module.exports = (sequelize, { STRING, BOOLEAN, INTEGER, DATE }) => {
+module.exports = (sequelize, Sequelize) => {
     const users = sequelize.define('users', {
         name: {
-            type: Sequelize.STRING  
+            type: Sequelize.STRING
         },
         email: {
             type: Sequelize.STRING,
-            unique: true,
-            allowNull: true
+            unique: true
+        },
+        mobile: {
+            type: Sequelize.BIGINT,
         },
         password: {
             type: Sequelize.STRING
@@ -17,16 +19,19 @@ module.exports = (sequelize, { STRING, BOOLEAN, INTEGER, DATE }) => {
         last_login: {
             type: Sequelize.DATE
         },
+        user_type: {
+            type: Sequelize.STRING
+        },
         login_status: {
             type: Sequelize.INTEGER
         }
     }, {
         classMethods: {
             associate: (models) => {
-                users.hasMany(models.users_address);
-                users.hasMany(models.users_cart);
-                users.hasMany(models.users_token);
-                users.hasMany(models.orders);
+                users.hasMany(models.users_address, { foreignKey: 'user_id' });
+                users.hasMany(models.users_cart, { foreignKey: 'user_id' });
+                users.hasMany(models.users_token, { foreignKey: 'user_id' });
+                users.hasMany(models.orders, { foreignKey: 'user_id' });
             }
         }
     });

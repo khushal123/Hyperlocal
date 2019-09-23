@@ -24,11 +24,21 @@ module.exports = {
         type: Sequelize.STRING
       },
       refund_status: {
-        type: Sequelize.ENUM
+        type: Sequelize.STRING
       },
       payments_id: {
         type: Sequelize.BIGINT,
-      }
+      },
+      createdAt: {
+        allowNull: true,
+        type: Sequelize.DATE,
+        default: Sequelize.fn("NOW")
+      },
+      updatedAt: {
+        allowNull: true,
+        type: Sequelize.DATE,
+        default: Sequelize.fn("NOW")
+      },
     });
 
   },

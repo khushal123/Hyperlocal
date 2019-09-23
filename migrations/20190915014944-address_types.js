@@ -7,28 +7,27 @@ module.exports = {
      Return a promise to correctly handle asynchronicity.
 
      Example: */
-    return queryInterface.createTable('discounts', {
+    return queryInterface.createTable('address_types', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      payment_type: {
+      type: {
         type: Sequelize.STRING
       },
-      amount: {
-        type: Sequelize.FLOAT,
+      createdAt: {
+        allowNull: true,
+        type: Sequelize.DATE,
+        default: Sequelize.fn("NOW")
       },
-      transaction_id: {
-        type: Sequelize.BIGINT
-      },
-      status: {
-        type: Sequelize.INTEGER
-      },
-
+      updatedAt: {
+        allowNull: true,
+        type: Sequelize.DATE,
+        default: Sequelize.fn("NOW")
+      }
     });
-
   },
 
   down: (queryInterface, Sequelize) => {
@@ -37,7 +36,7 @@ module.exports = {
      Return a promise to correctly handle asynchronicity.
 
      Example: */
-    return queryInterface.dropTable('discounts');
+    return queryInterface.dropTable('address_types');
 
   }
 };

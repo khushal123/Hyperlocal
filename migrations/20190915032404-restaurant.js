@@ -7,7 +7,7 @@ module.exports = {
      Return a promise to correctly handle asynchronicity.
 
      Example: */
-    return queryInterface.createTable('users', {
+    return queryInterface.createTable('restaurants', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -17,29 +17,39 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      email: {
-        type: Sequelize.STRING,
-        unique: true,
-        allowNull: true
-      },
-      mobile: {
-        type: Sequelize.BIGINT,
-        unique: true
-      },
-      password: {
+      address_line_1: {
         type: Sequelize.STRING
+      },
+      address_line_2: {
+        type: Sequelize.STRING
+      },
+      address_line_3: {
+        type: Sequelize.STRING
+      },
+      lattitude: {
+        type: Sequelize.FLOAT
+      },
+      longitude: {
+        type: Sequelize.FLOAT
       },
       status: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER //closed, open, inactive,
       },
-      last_login: {
-        type: Sequelize.DATE
-      },
-      login_status: {
-        type: Sequelize.INTEGER
-      },
-      user_type:{
+      gst: {
         type: Sequelize.STRING
+      },
+      cgst: {
+        type: Sequelize.STRING
+      },
+      is_discount_available: {
+        type: Sequelize.INTEGER
+      },
+      discount_id: {
+        type: Sequelize.BIGINT,
+        references: {
+          model: 'discounts',
+          key: 'id'
+        },
       },
       createdAt: {
         allowNull: true,
@@ -50,7 +60,7 @@ module.exports = {
         allowNull: true,
         type: Sequelize.DATE,
         default: Sequelize.fn("NOW")
-      },
+      }
     });
 
   },
@@ -61,7 +71,7 @@ module.exports = {
      Return a promise to correctly handle asynchronicity.
 
      Example: */
-    return queryInterface.dropTable('users');
+    return queryInterface.dropTable('restaurants');
 
   }
 };

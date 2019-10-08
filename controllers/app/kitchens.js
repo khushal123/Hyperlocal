@@ -1,4 +1,4 @@
-var { kitchenCreateValidation } = require("../../utils/validations");
+var { kitchenCreateValidation, } = require("../../utils/validations");
 var { createKitchen, updateKitchen } = require("./../../database/admin/kitchens")
 let { validationErrorResponse, successResponse } = require("../../utils/response");
 

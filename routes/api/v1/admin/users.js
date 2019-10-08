@@ -26,9 +26,11 @@ router.post("/refreshDeviceId", refreshDeviceId);
 //list of orders
 router.get('/orders', getOrders);
 
+//get otp
+router.post('/otp/get', getOtp);
 
-
-
+//verify otp
+router.post('/otp/verify', verifyOtp);
 
 
 

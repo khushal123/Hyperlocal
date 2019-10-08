@@ -103,6 +103,14 @@ var deviceIdValidation = (body) => {
     const { error, value } = schema.validate(body);
     return { error, value };
 }
+let getKitchenListValidation = (body) => {
+    const schema = Joi.object({
+        device_id: Joi.string().required(),
+        user_id: Joi.number().required(),
+    });
+    const { error, value } = schema.validate(body);
+    return { error, value };
+}
 
 module.exports = {
     singleCheckoutValidation,

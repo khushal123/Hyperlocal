@@ -5,5 +5,20 @@ npm install pg --save
 sequelize migration:generate   
 
 
+msg91
+https://docs.msg91.com/collection/msg91-api-integration/5/pages/139
+
+API KEY: 297445AUDVoUNj5d99c071
+
+Razorpay
+key_id	key_secret
+rzp_test_cplhKOh8pDG5eh	6DxY2rxMiNPkHd1qZeHhkTWD
+
+https://razorpay.com/docs/payment-gateway/quick-integration/
+
+sendgrid api key
+
+API Key: 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
+
 
 

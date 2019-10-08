@@ -9,6 +9,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var appRouter = require('./routes/api/v1/app');
 var adminRouter = require("./routes/api/v1/admin");
+let deliveryRouter = require("./routes/api/v1/delivery");
 var { validateToken } = require("./utils/token");
 var app = express();
 
@@ -25,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/api/v1/app', appRouter);
 app.use('/api/v1/admin', adminRouter);
+app.use('/api/v1/delivery', deliveryRouter);
 
 //validate token
 

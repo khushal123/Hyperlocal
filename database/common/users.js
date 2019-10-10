@@ -103,7 +103,7 @@ let loginMobile = async (mobile) => {
 
 let updateOtpByUsername = async (username) => {
     try {
-       
+
         let otp = Math.floor(100000 + Math.random() * 900000);
         let updateOtp = await users.update({
             otp: otp
@@ -137,7 +137,7 @@ let updateOtpByUsername = async (username) => {
 let verifyOtpByUsername = async (username, otp) => {
     console.log(otp);
     try {
-        let user = await users.update({
+        let verify = await users.update({
             otp_verified: 1
         }, {
             where: {
@@ -146,8 +146,16 @@ let verifyOtpByUsername = async (username, otp) => {
                     mobile: username
                 },
                 otp: otp
-            }
+            },
         })
+        let user = await users.findOne({
+            where: {
+                [Op.or]: {
+                    email: username,
+                    mobile: username
+                }
+            }
+        });
         return user;
     } catch (error) {
         console.log(error)

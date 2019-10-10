@@ -201,9 +201,16 @@ let verifyOtp = async (req, res, next) => {
     let otp = req.body.otp;
     let username = req.body.username;
     try {
-        let verify = await verifyOtpByUsername(username, otp);
-        return successResponse(res, { message: "otp verified succesfully" })
+        let user = await verifyOtpByUsername(username, otp);
+        console.log(user.id)
+        let token = await generateToken(user.id);
+        console.log(token);
+        return successResponse(res, {
+            message: "otp verified succesfully",
+            token: token
+        })
     } catch (error) {
+        console.log(error)
         return validationErrorResponse(res, { message: "Otp validation failed" })
     }
 }

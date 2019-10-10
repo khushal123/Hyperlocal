@@ -5,7 +5,7 @@ var sendEmailOtp = async (otp, email) => {
         to: email,
         from: 'test@example.com',
         subject: 'Your Login OTP',
-        text: '',
+        text: `Your otp is: ${otp}`,
         html: `<strong>Your otp is: ${otp}</strong>`,
     };
    return sgMail.send(msg);

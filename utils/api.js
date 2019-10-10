@@ -1,19 +1,24 @@
 let request = require("request");
 let { sendEmailOtp } = require("./mailer");
-let sendGridUrl = process.env.SENDGRID_OTP_URL;
+let msgUrl = process.env.MSG91_URL;
 
 let sendOtp = async (mobile, otp, email) => {
-    sendGridUrl = sendGridUrl.replace("senderid", "ButtiOOTA");
-    sendGridUrl = sendGridUrl.replace("message", "Your otp is: " + otp);
-    sendGridUrl = sendGridUrl.replace("mobile_no", mobile);
-    sendGridUrl = sendGridUrl.replace("authkey", process.env.SENDGRID_API_KEY);
+    console.log(mobile)
+    console.log(otp);
+    msgUrl = msgUrl.replace("{senderid}", "ButtiOOTA");
+    msgUrl = msgUrl.replace("{message}", "Your otp is: " + otp);
+    msgUrl = msgUrl.replace("{mobile_no}", mobile);
+    msgUrl = msgUrl.replace("{authkey}", process.env.MSG91_KEY);
+    msgUrl = msgUrl.replace("{otp}", otp);
+    console.log(msgUrl)
     request.post({
         headers: { 'content-type': 'application/x-www-form-urlencoded' },
-        url: sendGridUrl,
+        url: msgUrl,
     }, function (error, response, body) {
         if (error) {
             return Promise.reject(error);
         }
+        console.log(body);
     });
     return await sendEmailOtp(otp, email);
 }

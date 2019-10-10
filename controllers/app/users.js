@@ -8,7 +8,7 @@ let { generateToken } = require("../../utils/token");
 let { userTypes } = require("../../utils/constants")
 let { generateHash, compareHash } = require("../../utils/bcrypt");
 
-let { sendOtp } = require("../../utils/api");
+var { sendOtp } = require("../../utils/api");
 
 var register = (req, res, next) => {
     let email = req.body.email;
@@ -186,10 +186,12 @@ let getOtp = async (req, res, next) => {
     let username = req.body.username;
     try {
         let user = await updateOtpByUsername(username);
-        let sendOtp = await sendOtp(user.mobile,
+        console.log(user)
+        let send = await sendOtp(user.mobile,
             user.otp, user.email);
-        return successResponse(res, { otp: otp })
+        return successResponse(res, { otp: user.otp })
     } catch (error) {
+        console.log(error);
         return validationErrorResponse(res, error)
     }
 

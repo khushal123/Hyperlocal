@@ -8,7 +8,7 @@ module.exports = (sequelize, Sequelize) => {
             unique: true
         },
         mobile: {
-            type: Sequelize.BIGINT,
+            type: Sequelize.STRING,
         },
         password: {
             type: Sequelize.STRING
@@ -19,11 +19,19 @@ module.exports = (sequelize, Sequelize) => {
         last_login: {
             type: Sequelize.DATE
         },
+
         user_type: {
             type: Sequelize.STRING
         },
         login_status: {
             type: Sequelize.INTEGER
+        },
+        otp: {
+            type: Sequelize.INTEGER
+        },
+        otp_verified: {
+            type: Sequelize.INTEGER,
+            default: 0
         }
     }, {
         classMethods: {

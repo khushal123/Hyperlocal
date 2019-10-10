@@ -25,10 +25,10 @@ router.get('/orders', getOrders);
 
 
 //get top
-router.post('/otp/get', getOtp);
+// router.post('/otp/get', getOtp);
 
 //verify top
-router.post('/otp/verify', verifyOtp);
+// router.post('/otp/verify', verifyOtp);
 
 
 

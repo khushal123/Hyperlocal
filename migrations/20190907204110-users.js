@@ -23,7 +23,7 @@ module.exports = {
                 allowNull: true
             },
             mobile: {
-                type: Sequelize.BIGINT,
+                type: Sequelize.STRING,
                 unique: true
             },
             password: {

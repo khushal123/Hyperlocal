@@ -3,15 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c0c023d7-c721-40a6-a2dc-ab1fbb6410f0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/admin/kitchens.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/admin/kitchens.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/app/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/app/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/app/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/app/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/common/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/database/common/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/20191005234045-delivery_details.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/v1/admin/kitchens.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/v1/admin/kitchens.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api/v1/app/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api/v1/app/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/validations.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/validations.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -101,7 +93,7 @@
       <workItem from="1571320415067" duration="507000" />
       <workItem from="1571321252383" duration="124000" />
       <workItem from="1571321455813" duration="103000" />
-      <workItem from="1571321604540" duration="5614000" />
+      <workItem from="1571321604540" duration="6989000" />
     </task>
     <servers />
   </component>

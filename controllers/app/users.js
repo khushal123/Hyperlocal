@@ -15,8 +15,17 @@ var {sendOtp} = require("../../utils/api");
 
 let homePage = async (req, res, next) => {
     console.log("homepage")
+    let bannerLinks= [
+        "https://dummyimage.com/600x400/000/fff",
+        "https://dummyimage.com/600x400/000/fff",
+        "https://dummyimage.com/600x400/000/fff"
+    ]
     let result = await getForHome(req.body. latitude, req.body.longitude);
-    successResponse(res, result);
+    let response = {
+        banner:bannerLinks,
+        restaurants:result
+    }
+    successResponse(res, response);
 }
 
 var register = (req, res, next) => {

@@ -1,10 +1,16 @@
 var express = require('express');
 var router = express.Router();
 var { register, login, getOrders, refreshToken, refreshDeviceId,
-    getCart, saveCart, profile, updateCart,
+    getCart, saveCart, profile, updateCart, homePage,
     getOtp, verifyOtp }
     = require("../../../../controllers/app/users");
 
+
+//home page
+router.post('/home', (req, res, next) => {
+    console.log("home    home");
+    return homePage(req, res, next);
+});
 
 //profile
 router.get('/profile', profile);

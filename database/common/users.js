@@ -1,9 +1,29 @@
 let models = require("../../models");
 let users = models.users;
+let restaurants = models.restaurants;
 let users_device_token = models.users_device_token;
 let users_cart = models.users_cart;
 const Op = models.Sequelize.Op;
 console.log(users);
+let sequelize = models.sequelize;
+let Sequelize = models.Sequelize;
+let getForHome = async (latitude, longitude) => {
+    console.log(location);
+    const inRadius = await restaurants.findAll({
+        where: Sequelize.where(
+            Sequelize.fn(
+                'ST_DWithin',
+                Sequelize.col('location'),
+                Sequelize.fn('ST_MakePoint', latitude, longitude),
+                3000
+            ),
+            true
+        ),
+        order: Sequelize.literal('id ASC')
+    })
+    return inRadius
+}
+
 let create = async (full_name, email, password, mobile, type) => {
     try {
         console.log(typeof users);
@@ -68,8 +88,7 @@ let loginEmail = async (email) => {
             });
         }
         return getUser;
-    }
-    catch (error) {
+    } catch (error) {
         console.log(error)
         return Promise.reject(error)
     }
@@ -94,8 +113,7 @@ let loginMobile = async (mobile) => {
             });
         }
         return getUser;
-    }
-    catch (error) {
+    } catch (error) {
         console.log(error)
         return Promise.reject(error)
     }
@@ -131,7 +149,6 @@ let updateOtpByUsername = async (username) => {
         return Promise.reject(error);
     }
 }
-
 
 
 let verifyOtpByUsername = async (username, otp) => {
@@ -281,5 +298,6 @@ module.exports = {
     refreshDeviceToken,
     refreshJwt,
     create, loginEmail, loginMobile,
+    getForHome,
     getUserInfo, updateUserInfo, getFullCart, addToCart, updateCartProduct, deleteCartProduct, deleteAllCart
 }

@@ -1,9 +1,23 @@
 let models = require("../../models");
 let users = models.users;
+let restaurants = models.restaurants;
 let users_device_token = models.users_device_token;
 let users_cart = models.users_cart;
 const Op = models.Sequelize.Op;
 console.log(users);
+let sequelize = models.sequelize;
+let getForHome = async (latitude, longitude) => {
+    const location = sequelize.literal(`ST_GeomFromText('POINT(${latitude} ${longitude})')`)
+    const distance = sequelize.fn('ST_Distance_Sphere', sequelize.col('location'), location)
+
+    const inRadius = await restaurants.findAll({
+        order: distance,
+        where: sequelize.where(distance, {$lte: 5}),
+        logging: console.log
+    })
+    return inRadius
+}
+
 let create = async (full_name, email, password, mobile) => {
     try {
         console.log(typeof users);
@@ -69,8 +83,7 @@ let loginEmail = async (email, password) => {
             });
         }
         return getUser;
-    }
-    catch (error) {
+    } catch (error) {
         console.log(error)
         return Promise.reject(error)
     }
@@ -93,7 +106,7 @@ let refreshDeviceToken = async (body) => {
             where: {
                 user_id: body.user_id
             },
-            raw:true
+            raw: true
         })
         var updateDeviceId = {}
         console.log(user);
@@ -191,6 +204,7 @@ let deleteAllCart = (userId) => {
 
 
 module.exports = {
+    getForHome,
     refreshDeviceToken,
     refreshJwt,
     create, loginEmail, loginMobile,

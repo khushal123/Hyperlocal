@@ -1,4 +1,4 @@
-var dotenv = require("dotenv");
+const dotenv = require("dotenv");
 dotenv.config();
 var createError = require('http-errors');
 var express = require('express');
@@ -42,6 +42,7 @@ app.use((req, res, next) => {
   //     description: error
   //   })
   // })
+  next()
 });
 
 // catch 404 and forward to error handler

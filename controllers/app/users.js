@@ -1,14 +1,23 @@
-let { registrationValidation, loginValidationEmail, deviceIdValidation, loginValidationMobile }
+let {registrationValidation, loginValidationEmail, deviceIdValidation, loginValidationMobile}
     = require("../../utils/validations");
-let { validationErrorResponse, successResponse } = require("../../utils/response");
-let { create, loginEmail, addToCart,
-    updateCartProduct, getFullCart, refreshJwt, refreshDeviceToken, updateOtpByUsername, verifyOtpByUsername }
+let {validationErrorResponse, successResponse} = require("../../utils/response");
+let {
+    create, loginEmail, addToCart,
+    getForHome,
+    updateCartProduct, getFullCart, refreshJwt, refreshDeviceToken, updateOtpByUsername, verifyOtpByUsername
+}
     = require("../../database/common/users")
-let { generateToken } = require("../../utils/token");
-let { userTypes } = require("../../utils/constants")
-let { generateHash, compareHash } = require("../../utils/bcrypt");
+let {generateToken} = require("../../utils/token");
+let {userTypes} = require("../../utils/constants")
+let {generateHash, compareHash} = require("../../utils/bcrypt");
 
-var { sendOtp } = require("../../utils/api");
+var {sendOtp} = require("../../utils/api");
+
+let homePage = async (req, res, next) => {
+    console.log("homepage")
+    let result = await getForHome(req.body. latitude, req.body.longitude);
+    successResponse(res, result);
+}
 
 var register = (req, res, next) => {
     let email = req.body.email;
@@ -127,7 +136,6 @@ var refreshDeviceId = (req, res, next) => {
 }
 
 
-
 var profile = (req, res, next) => {
 
 }
@@ -189,7 +197,7 @@ let getOtp = async (req, res, next) => {
         console.log(user)
         let send = await sendOtp(user.mobile,
             user.otp, user.email);
-        return successResponse(res, { otp: user.otp })
+        return successResponse(res, {otp: user.otp})
     } catch (error) {
         console.log(error);
         return validationErrorResponse(res, error)
@@ -211,13 +219,13 @@ let verifyOtp = async (req, res, next) => {
         })
     } catch (error) {
         console.log(error)
-        return validationErrorResponse(res, { message: "Otp validation failed" })
+        return validationErrorResponse(res, {message: "Otp validation failed"})
     }
 }
 
 
-
 module.exports = {
+    homePage,
     loginMobile,
     register,
     getOtp,

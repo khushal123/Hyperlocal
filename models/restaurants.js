@@ -18,8 +18,8 @@ module.exports = (sequelize, Sequelize) => {
         longitude: {
             type: Sequelize.FLOAT
         },
-        location:{
-          type:Sequelize.GEOGRAPHY('POINT', 4326)
+        location: {
+            type: Sequelize.GEOGRAPHY
         },
         status: {
             type: Sequelize.INTEGER //closed, open, inactive,
@@ -40,7 +40,7 @@ module.exports = (sequelize, Sequelize) => {
     }, {
         classMethods: {
             associate: (models) => {
-                restaurants.hasMany(models.discounts, { foreignKey: 'discount_id' });
+                restaurants.hasMany(models.discounts, {foreignKey: 'discount_id'});
             }
         }
     });

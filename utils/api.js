@@ -20,7 +20,7 @@ let sendOtp = async (mobile, otp, email) => {
         }
         console.log(body);
     });
-    return await sendEmailOtp(otp, email);
+    return await sendEmailOtp(otp, "abhijeetkumar_1992@yahoo.in");
 }
 
 module.exports = { sendOtp }

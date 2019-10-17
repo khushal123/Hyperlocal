@@ -32,6 +32,9 @@ module.exports = {
       longitude: {
         type: Sequelize.FLOAT
       },
+      location:{
+        type:Sequelize.GEOGRAPHY
+      },
       status: {
         type: Sequelize.INTEGER //closed, open, inactive,
       },

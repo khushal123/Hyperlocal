@@ -12,7 +12,7 @@ module.exports = (sequelize, Sequelize) => {
         address_line_3: {
             type: Sequelize.STRING
         },
-        lattitude: {
+        latitude: {
             type: Sequelize.FLOAT
         },
         longitude: {

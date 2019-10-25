@@ -49,7 +49,7 @@ let kitchenCreateValidation = (res, body) => {
         dish_type: Joi.string().required(),
         address_line_1: Joi.string().required(),
         address_line_2: Joi.string().required(),
-        lattitude: Joi.string().required(),
+        latitude: Joi.string().required(),
         longitude: Joi.string().required()
     });
     const {error, value} = schema.validate(body);

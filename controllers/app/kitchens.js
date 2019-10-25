@@ -8,7 +8,7 @@ let create = (req, res, next) => {
     let address_line_1 = req.body.address_line_1;
     let address_line_2 = req.body.address_line_2;
     let address_line_3 = req.body.address_line_3;
-    let lattitude = req.body.lattitude;
+    let latitude = req.body.latitude;
     let longitude = req.body.longitude;
 
     let validationResult = kitchenCreateValidation(req, {
@@ -27,7 +27,7 @@ let create = (req, res, next) => {
         address_line_1: address_line_1,
         address_line_2: address_line_2,
         address_line_3: address_line_3 ? address_line_3 : "",
-        lattitude: lattitude ? lattitude : "",
+        latitude: latitude ? latitude : "",
         longitude: longitude ? longitude : ""
     }).then((kitchen) => {
         successResponse(res, kitchen);

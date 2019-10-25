@@ -8,7 +8,6 @@ console.log(users);
 let sequelize = models.sequelize;
 let Sequelize = models.Sequelize;
 let getForHome = async (latitude, longitude) => {
-    console.log(location);
     const inRadius = await restaurants.findAll({
         where: Sequelize.where(
             Sequelize.fn(

@@ -8,7 +8,7 @@ let create = (req, res, next) => {
     let address_line_1 = req.body.address_line_1;
     let address_line_2 = req.body.address_line_2;
     let address_line_3 = req.body.address_line_3;
-    let lattitude = req.body.lattitude;
+    let latitude = req.body.latitude;
     let longitude = req.body.longitude;
 
     let validationResult = kitchenCreateValidation(req, {
@@ -16,14 +16,14 @@ let create = (req, res, next) => {
         dish_type: dish_type,
         address_line_1: address_line_1,
         address_line_2: address_line_2,
-        lattitude: lattitude,
+        latitude: latitude,
         longitude: longitude
     })
     if (validationResult.error) {
         validationErrorResponse(res, validationResult.error.details);
         return;
     }
-    let point = { type: 'Point', coordinates: [lattitude, longitude]};
+    let point = { type: 'Point', coordinates: [latitude, longitude]};
 
     createKitchen({
         name: name,
@@ -31,7 +31,7 @@ let create = (req, res, next) => {
         address_line_1: address_line_1,
         address_line_2: address_line_2,
         address_line_3: address_line_3 ? address_line_3 : "",
-        lattitude: lattitude ? lattitude : "",
+        latitude: latitude ? latitude : "",
         longitude: longitude ? longitude : "",
         location: point,
         status: 0 //closed
